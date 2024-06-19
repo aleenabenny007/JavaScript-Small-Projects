@@ -1,0 +1,74 @@
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+    height: 90vh;
+}
+
+h1{
+    color: green;
+    font-size: 40px;
+    text-shadow: 2px 2px 1px rgb(163, 160, 160);
+}
+
+.basket{
+    display: flex;
+    flex-flow: column;
+    border-right: 5px solid black;
+    padding-right: 50px;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    width: 40%;
+    padding: 8px 10px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    border-radius: 10px;
+}
+
+#sort-btn{
+    background-color: green;
+    align-self: center;
+    justify-self: center;
+    margin-top: 50px;
+}
+
+.shelves{
+    height: 40%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.shelf{
+    background-color: grey;
+    width: 600px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.apple{
+    background-color: rgba(242, 95, 95, 0.661);
+}
+
+.orange{
+    background-color: rgba(246, 170, 98, 0.496);
+}
+
+.shelf p{
+    font-size: 30px;
+    text-align: center;
+}
+

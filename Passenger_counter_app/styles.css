@@ -1,0 +1,61 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url("station.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin: 10px 0;
+}
+
+h2{
+    font-size: 50px;
+    margin: 0 0 20px;
+}
+
+button{
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    width: 300px;
+    margin: 10px 0;
+}
+
+#increment-btn{
+    background-color: brown;
+}
+
+#save-btn{
+    background-color: green;
+}
+
+#clear-btn{
+    background-color: black;
+}
+
+.log{
+    display: grid;
+    place-items: center;
+}
+
+#prev-entries{
+    width: 300px;
+}
+
+.myclass{
+    border: 1px solid black;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+

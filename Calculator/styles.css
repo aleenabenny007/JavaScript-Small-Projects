@@ -1,0 +1,44 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+}
+
+button{
+    padding: 10px 20px;
+    background-color: grey;
+    color: white;
+    font-size: 26px;
+    border-radius: 8px;
+}
+
+.dashed{
+    width: 100%;
+    min-width: 50px;
+    max-width: fit-content;
+    height: 50px;
+    border-bottom: 2px solid black;
+    display: grid;
+    place-items: center;
+}
+
+.dashed:nth-child(n){
+    color: grey;
+    margin-top: 100px;
+}
+
+.numbers{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 0 30px;
+    margin-bottom: 50px;
+}
+
+input{
+    height: 100%;
+    border: none;
+    font-size: 20px;
+}
