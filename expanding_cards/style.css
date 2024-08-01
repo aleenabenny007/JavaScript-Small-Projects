@@ -1,0 +1,101 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    gap: 20px;
+    padding: 80px;
+    box-sizing: border-box;
+}
+
+.panel {
+    height: 100%;
+    width: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+}
+.panel:nth-child(odd) {
+    background-image: url('https://t4.ftcdn.net/jpg/05/65/36/03/360_F_565360370_LrWWCTxczrmwqpsPYPljiFyE4gFqpecr.jpg');
+}
+
+.panel:nth-child(even) {
+    background-image: url('https://kidlingoo.com/wp-content/uploads/flowers_name_in_english.jpg');
+}
+
+.panel.active {
+    flex: 1;
+    transition: flex 0.2s ease-out;
+}
+
+h3 {
+    color: white;
+    opacity: 0;
+    margin: 20px;
+}
+
+.panel.active > h3 {
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+
+@media screen and (max-width: 1500px){
+    .container{
+        padding: 30px;
+    }
+
+    .panel {
+        width: 80px;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .container{
+        padding: 30px;
+    }
+
+    .panel {
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 869px){
+    .container{
+        padding: 40px;
+        gap: 10px;
+    }
+
+    .panel {
+        width: 40px;
+    }
+
+    .panel:nth-child(5) {
+       display: none;
+    }
+}
+
+@media screen and (max-width: 769px){
+    .container{
+        padding: 30px;
+    }
+
+    .panel:nth-child(4) {
+        display: none;
+     }
+}
+
+@media screen and (max-width: 459px){
+    .container{
+        padding: 30px;   
+    }
+}           

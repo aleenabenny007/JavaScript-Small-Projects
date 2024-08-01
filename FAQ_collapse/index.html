@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ Collapse</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+      * {
+        box-sizing: border-box;
+        font-family: "Muli";
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        background-color: #e0e0e0;
+        padding: 50px;
+      }
+
+      img {
+        width: 20px;
+      }
+
+      .faq-container {
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .faq {
+        position: relative;
+        background-color: transparent;
+        border: 1px solid #9fa4a8;
+        margin: 20px 0;
+        border-radius: 10px;
+        padding: 30px;
+        overflow: hidden;
+        transition: 0.3s ease;
+      }
+
+      .faq-text {
+        display: none;
+      }
+
+      .faq.active {
+        background-color: #f0f0f0;
+        box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      .faq.active::before {
+        content: url("comment.png");
+        width: 20px;
+        height: 20px;
+      }
+
+      .faq.active .faq-text {
+        display: block;
+      }
+
+      button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: transparent;
+        border: 0;
+      }
+
+      button:hover {
+        background-color: transparent;
+      }
+
+      #open {
+        display: inline;
+      }
+
+      #close {
+        display: none;
+      }
+
+      .faq.active #open {
+        display: none;
+      }
+
+      .faq.active #close {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">Why shouldn't we trust atoms?</h3>
+        <p class="faq-text">They make up everything 1</p>
+        <button>
+          <img
+            id="open"
+            src="https://img.icons8.com/?size=100&id=2760&format=png&color=000000"
+            alt=""
+          />
+          <img
+            id="close"
+            src="https://img.icons8.com/?size=100&id=8112&format=png&color=000000"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">Why shouldn't we trust atoms?</h3>
+        <p class="faq-text">They make up everything 1</p>
+        <button>
+          <img
+            id="open"
+            src="https://img.icons8.com/?size=100&id=2760&format=png&color=000000"
+            alt=""
+          />
+          <img
+            id="close"
+            src="https://img.icons8.com/?size=100&id=8112&format=png&color=000000"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">Why shouldn't we trust atoms?</h3>
+        <p class="faq-text">They make up everything 1</p>
+        <button>
+          <img
+            id="open"
+            src="https://img.icons8.com/?size=100&id=2760&format=png&color=000000"
+            alt=""
+          />
+          <img
+            id="close"
+            src="https://img.icons8.com/?size=100&id=8112&format=png&color=000000"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">Why shouldn't we trust atoms?</h3>
+        <p class="faq-text">They make up everything 1</p>
+        <button>
+          <img
+            id="open"
+            src="https://img.icons8.com/?size=100&id=2760&format=png&color=000000"
+            alt=""
+          />
+          <img
+            id="close"
+            src="https://img.icons8.com/?size=100&id=8112&format=png&color=000000"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const btns = document.querySelectorAll("button");
+      const faqs = document.querySelectorAll(".faq");
+
+      function closeAllFAQs(currentFaq) {
+        faqs.forEach((faq) => {
+          if (faq !== currentFaq) faq.classList.remove("active");
+        });
+      }
+
+      btns.forEach((btn) =>
+        btn.addEventListener("click", function (e) {
+          const faq = btn.closest(".faq");
+          faq.classList.toggle("active");
+          closeAllFAQs(faq);
+        })
+      );
+    </script>
+  </body>
+</html>

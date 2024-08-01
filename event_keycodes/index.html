@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Keycodes</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+        * {
+          box-sizing: border-box;
+          font-family: "Roboto";
+          font-size: 16px;
+        }
+  
+        body {
+          display: grid;
+          place-items: center;
+          width: 100vw;
+          height: 100vh;
+          margin: 0;
+          background-color: #e0e0e0;
+          text-align: center;
+        }
+
+        #insert{
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .key{
+            border: 1px solid #999;
+            background-color: #eee;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            flex-direction: column;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            align-items: center;
+            margin: 10px 10px 20px;
+            min-width: 150px;
+            height: 66px;
+        }
+
+        .key small{
+            opacity: 0.4;
+            position: absolute;
+            text-align: center;
+            margin-top: -44px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="insert">
+        <div class="key">
+            Press any key to get the keyCode
+        </div>
+    </div>
+
+
+    <script>
+        const insert = document.getElementById('insert');
+        window.addEventListener('keydown', (e) => {
+            insert.innerHTML = `
+            <div class="key">
+            ${e.key}
+            <small>event.key</small>
+            </div>
+            <div class="key">
+            ${e.keyCode}
+            <small>event.keyCode</small>
+            </div>
+            <div class="key">
+            ${e.code}
+            <small>event.code</small>
+            </div>
+        `;
+        })
+    </script>
+</body>
+</html>

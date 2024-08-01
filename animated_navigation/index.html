@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Navigation</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Muli&display=swap");
+      * {
+        box-sizing: border-box;
+        font-family: "Muli";
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+
+      section {
+        width: 100%;
+        height: 50%;
+        background-color: #2b88f0;
+      }
+
+      section:first-child {
+        background-color: rgb(255, 255, 255);
+      }
+
+      nav {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        width: 80px;
+        padding: 20px;
+        background-color: white;              
+        box-shadow: 2px 4px 10px 3px rgba(94, 94, 94, 0.566);
+        transition: width 0.6s linear;
+      }
+
+      nav ul {
+        width: 0;
+        display: flex;
+        list-style-type: none;
+        justify-content: space-between;
+        background-color: white;
+        align-items: center;
+        padding: 0px;
+        overflow: hidden;
+      }
+
+      nav ul li {
+        font-weight: 700;
+        transform: rotateY(0deg);
+        opacity: 0;
+        transition: transform 0.6s linear, opacity 0.6s linear;
+      }
+
+      .close {
+        display: none;
+      }
+
+      button {
+        background-color: transparent;
+        border: 0;
+        display: grid;
+        place-items: center;
+        height: 30px;
+        width: 30px;
+        position: relative;
+      }
+
+      nav.active{
+        width: 350px;     
+      }
+
+      nav.active ul{
+        width: 100%;
+        padding-right: 20px;
+      }
+
+      nav.active ul li{
+        opacity: 1;
+        transform: rotateY(360deg);
+      }
+
+      nav.active .open{         
+        display: none;
+      }
+
+      nav.active .close{
+        display: block;
+      }
+
+      .icon .line{
+        background-color: #2b88f0;
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        top: 10px;
+        transition: transform 0.6s linear;
+      }
+
+      .icon .line2{
+        top: auto;
+        bottom: 10px;  
+      }
+
+      nav.active .icon .line1{
+        transform: rotate(-765deg) translateY(5.5px);
+      }
+      nav.active .icon .line2{
+        transform: rotate(765deg) translateY(-5.5px);
+    }
+    
+
+
+
+    </style>
+  </head>
+  <body>
+    <section></section>
+    <nav id="nav" class="active">
+        <!-- <nav id="nav"> -->
+      <ul>
+        <li>Home</li>
+        <li>Works</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+      <button id="toggle" class="icon">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </button>
+    </nav>
+    <section></section>
+
+    <script>
+      const btn = document.getElementById("toggle");
+      const nav = document.getElementById("nav");
+
+      btn.addEventListener("click", function () {
+        nav.classList.toggle("active");
+      });      
+    </script>
+  </body>
+</html>

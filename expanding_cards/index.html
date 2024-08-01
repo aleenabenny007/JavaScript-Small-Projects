@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expanding Cards</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel active">
+        <h3>Explore the world</h3>
+      </div>
+      <div class="panel">
+        <h3>Explore the world</h3>
+      </div>
+      <div class="panel">
+        <h3>Explore the world</h3>
+      </div>
+      <div class="panel">
+        <h3>Explore the world</h3>
+      </div>
+      <div class="panel">
+        <h3>Explore the world</h3>
+      </div>
+    </div>
+
+    <script>
+      const panels = document.querySelectorAll(".panel");
+      const h3 = document.querySelector("h3");
+
+      panels.forEach((panel) => {
+        panel.addEventListener("click", function () {
+          removeActiveClasses();
+          panel.classList.add("active");
+        });
+      });
+
+      function removeActiveClasses() {
+        panels.forEach((panel) => panel.classList.remove("active"));
+      }
+    </script>
+  </body>
+</html>

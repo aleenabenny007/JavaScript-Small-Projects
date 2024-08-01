@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incrementing counter</title> 
+    
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+        * {
+          box-sizing: border-box;
+          font-family: "Roboto Mono";
+          color: #fff;
+          font-size: 16px;
+          font-weight: bold;
+        }
+  
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100vw;
+          height: 100vh;
+          margin: 0;
+          background-color: #761587;
+          padding: 50px;
+        }
+
+        .counter-container{
+            width: 33.33%;
+            max-width: 400px;
+            min-width: 124px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .counter{
+            font-size: 60px;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width:864px) {
+            body{
+                flex-direction: column;
+                gap: 50px;
+            }
+        }
+
+        @media screen and (max-width:659px) {
+            .counter{
+            font-size: 40px;
+        }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <img src="https://img.icons8.com/?size=50&id=8824&format=png&color=ffffff" alt="">
+        <div class="counter" data-target="12000">0</div>
+        <span>Twitter Followers</span>
+    </div>
+
+    <div class="counter-container">
+        <img src="https://img.icons8.com/?size=50&id=37326&format=png&color=ffffff" alt="">
+        <div class="counter" data-target="5000">0</div>
+        <span>Youtube Subscribers</span>
+    </div>
+
+    <div class="counter-container">
+        <img src="https://img.icons8.com/?size=50&id=118467&format=png&color=ffffff" alt="">
+        <div class="counter" data-target="7500">0</div>
+        <span>Facebook Fans</span>
+    </div>
+
+
+    <script>
+        const counters = document.querySelectorAll('.counter');
+
+        counters.forEach(counter => {
+            counter.innerText = '0';
+
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const c = +counter.innerText;
+
+                const increment = target / 200;
+
+                if(c < target){
+                    counter.innerText = `${Math.ceil(c + increment)}`;
+                    setTimeout(updateCounter, 1);
+                } else 
+                counter.innerText = target;
+            }
+            updateCounter();          
+        });
+    </script>
+</body>
+</html>

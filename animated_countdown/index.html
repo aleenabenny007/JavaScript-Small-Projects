@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animations</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      p {
+        font-size: 100px;
+      }
+
+      p.animate {
+        animation: show 1s ease-in-out infinite;
+      }
+
+      button {
+        background-color: #12aa1c;
+        color: white;
+        font-size: 30px;
+        padding: 10px 20px;
+        border-radius: 10px;    
+      }
+
+      @keyframes show {
+        0% {
+          font-size: 0px;
+        }
+        30% {
+          font-size: 100px;
+          transform: rotate(0deg) translate(0%, 0%) scale(1);
+        }
+
+        60% {
+          transform: rotate(0deg) translate(0%, 0%) scale(0.8);
+        }
+
+        100% {
+          transform: rotate(-90deg) translate(-50%, -50%) scale(0.2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p></p>
+    <button>Go</button>
+
+    <script>
+      const btn = document.querySelector("button");
+      const p = document.querySelector("p");
+      let num = 3;
+
+      btn.addEventListener("click", function (e) {
+        p.classList.add("animate");
+        btn.style.display = "none";
+        const interval = setInterval(() => {
+          if (num < 1) {
+            clearInterval(interval);
+            p.classList.remove("animate");
+            btn.style.display = "block";
+            num = 3;
+            p.innerText = "";
+          } else {
+            p.innerHTML = num;
+            num--;
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

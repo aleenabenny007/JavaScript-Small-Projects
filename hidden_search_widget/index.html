@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Search Widget</title>
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+    .search{
+        width: 100%;
+        margin-top: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+    .input{
+        height: 30px;
+        width: 30px;
+        transition: width 0.3s ease;
+    }
+    .input:focus{
+        border-color: rgb(215, 211, 211);
+        outline: none;
+    }
+    .btn{
+        background-color: rgb(215, 211, 211);
+        position: absolute;
+    }
+    img{
+        height: 20px;
+    }
+    .search.active .btn{
+        position: static;
+    }
+    .search.active .input{
+        width: 100px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="search">
+        <input type="text" class="input" placeholder="Search...">
+        <button class="btn">
+            <img src="https://img.icons8.com/?size=100&id=132&format=png&color=000000" alt="">
+        </button>
+    </div>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        const input = document.querySelector('.input');
+        const search = document.querySelector('.search');
+
+        btn.addEventListener('click', function() {
+            // btn.style.position = 'static';
+            // input.style.width = '100px';
+            search.classList.toggle('active');
+            input.focus();
+
+        });
+    </script>
+</body>
+</html>
