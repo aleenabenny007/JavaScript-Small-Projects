@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Capture Propogation and Bubbling</title>
+    <style>
+        body{
+            margin: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        }
+
+        .outer-container{
+            background-color: lawngreen;
+            padding: 50px;
+        }
+
+        .container{
+            background-color: lightblue;
+            padding: 50px;
+        }
+
+        .inner-container{
+            background-color: brown;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="container">
+            <div class="inner-container"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const containers = document.querySelectorAll('div');
+        console.log(containers);
+
+        function logText(e) {
+            console.log('.........................');
+            console.log(this.classList.value);
+            console.log('.........................');
+        }
+
+        // Capturing Phase
+        containers.forEach(container => container.addEventListener('click', logText, true));
+
+        // Bubbling Phase
+        containers.forEach(container => container.addEventListener('click', logText));
+  
+    </script>       
+</body>
+</html>

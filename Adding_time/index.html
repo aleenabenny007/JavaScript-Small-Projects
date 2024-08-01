@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding up times</title>
+    <style>
+        *{
+          box-sizing: border-box;
+        
+        }
+        body{
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+        }
+        ul{
+            list-style-type: none;
+            padding: 0;   
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 50px;
+        }
+
+        ul li{
+            width: 300px;
+            height: 200px;
+            background-color: rgb(134, 75, 138);
+            color: white;
+            font-size: 20px;
+            display: grid;
+            place-items: center;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        span{
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 16px;
+        }
+
+        p{  
+          width: 100%;
+          text-align: left;
+          font-size: 20px;
+          font-weight: 520;
+          padding: 50px 0 0 50px;
+        }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li data-time="1:56">Video 1</li>
+      <li data-time="5:43">Video 1</li>
+      <li data-time="3:50">Video 1</li>
+      <li data-time="8:10">Video 1</li>
+      <li data-time="7:56">Video 1</li>
+      <li data-time="1:38">Video 1</li>
+      <li data-time="2:10">Video 1</li>
+      <li data-time="4:56">Video 1</li>
+      <li data-time="3:20">Video 1</li>
+      <li data-time="5:25">Video 1</li>
+      <li data-time="1:56">Video 1</li>
+      <li data-time="5:43">Video 1</li>
+      <li data-time="3:50">Video 1</li>
+      <li data-time="8:10">Video 1</li>
+      <li data-time="7:56">Video 1</li>
+      <li data-time="1:38">Video 1</li>
+      <li data-time="2:10">Video 1</li>
+      <li data-time="4:56">Video 1</li>
+      <li data-time="3:20">Video 1</li>
+      <li data-time="5:25">Video 1</li>
+    </ul>
+
+    <script>
+        // DOM manipulation   
+        const listItems = document.querySelectorAll('li');
+        listItems.forEach((item, i) => {
+            item.textContent = `Video ${i+1}`;
+            const span = document.createElement('span');
+            span.textContent = item.dataset.time;
+            item.appendChild(span);
+        });   
+
+        // script
+        const seconds = [...listItems].map(item => item.dataset.time).map(time => {
+            const [mins, secs] = time.split(':').map(parseFloat);
+            return (mins * 60) + secs;
+        }).reduce((total, secs) => total + secs);
+        console.log(seconds);      
+
+        let secondsLeft = seconds;
+        const hours = Math.floor(secondsLeft / 3600);
+        secondsLeft = secondsLeft % 3600;
+        const mins = Math.floor(secondsLeft / 60);
+        secondsLeft = secondsLeft % 60;      
+
+        const total = [hours, mins.toString().padStart(2,'0'), secondsLeft.toString().padStart(2,'0')].join(':');
+        console.log(total);
+
+        const p = document.createElement('p');
+        p.innerText = "Total duration : " + total;
+        document.body.prepend(p);
+         
+    </script>
+  </body>
+</html> 

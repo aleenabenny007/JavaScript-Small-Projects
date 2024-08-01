@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14 Dev Tools and Tricks</title>
+  </head>
+  <body>
+    <p onclick="makeGreen()" style="font-size: 26px">xBREAKxDOWNx</p>
+
+    <script>
+      const p = document.querySelector("p");
+      let isGreen = false;
+
+      function makeGreen() {
+        isGreen = !isGreen;
+        if (isGreen) {
+          p.style.color = "green";
+          p.style.fontSize = "50px";
+        } else {
+          p.style.color = "unset";
+          p.style.fontSize = "26px";
+        }
+      }
+
+      // interpolated (like in C programming)
+      console.log("Hello I am a %s string at %d%", "💩", 100);
+
+      // styled
+      console.log(
+        "%c Iam some styled text",
+        "font-size: 50px;color:green",
+        "I am not styled"
+      );
+
+      // warining
+      console.warn("It's a warning!");
+
+      // error
+      console.error("It's an error");
+
+      // info
+      console.info("This is an info");
+
+      // testing
+      console.assert(p.classList.contains("wrong"), "Statement is wrong");
+      p.classList.add("wrong");
+      //prints only if assertion fails
+      console.assert(p.classList.contains("wrong"), "Statement is wrong");
+
+      // clear
+      console.clear();
+
+      // Viewing DOM elements
+      console.log(p);
+
+      //.............
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+
+      // Grouping together
+      dogs.forEach((dog) => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+        console.groupEnd(`${dog.name}`);
+      });
+
+      // counting
+
+      console.count("Wes");
+      console.count("Wes");
+      console.count("Steve");
+      console.count("Steve");
+      console.count("Wes");
+      console.count("Steve");
+      console.count("Wes");
+      console.count("Steve");
+      console.count("Steve");
+      console.count("Steve");
+      console.count("Steve");
+      console.count("Steve");
+
+      // timing
+      console.time("fetching data");
+      fetch("https://api.github.com/users/wesbos")
+        .then((data) => data.json())
+        .then((data) => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
+
+      console.table(dogs);
+    </script>
+  </body>
+</html>

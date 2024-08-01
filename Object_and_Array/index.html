@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object and Array</title>
+</head>
+<body>
+    <h1 style="text-align: center;">See the console :)</h1>
+
+    <script>
+
+        let age = 100;
+        let age2 = age;
+        console.log(age,age2, age === age2);
+        age = 101;
+        console.log(age,age2, age === age2);
+
+        let arr = [1,2,3];
+        let arr2 = arr;
+        console.log(arr,arr2, arr === arr2);
+        arr.push(5);
+        console.log(arr,arr2, arr === arr2);
+
+        // using spread operator
+        let arr3 = [1,2,3];
+        let arr4 = [...arr3];
+        console.log(arr3,arr4, arr3 === arr4);
+        arr3.push(5);
+        console.log(arr3,arr4, arr3 === arr4);   
+
+        let obj = {name:'Aleena', age:20, social:{
+            twitter: 'tweet@aleena',
+            fb: 'fb@aleena'
+        }};
+        let obj2 = obj;
+        console.log(obj,obj2,obj===obj2);
+        obj.name = 'Rohit';
+        console.log(obj,obj2,obj===obj2);
+
+        // using spread operator
+        let obj3 = {name:'Aleena', age:20, social:{
+            twitter: 'tweet@aleena',
+            fb: 'fb@aleena'
+        }};
+        let obj4 = {...obj3};
+        console.log(obj3,obj4,obj3===obj4);
+        obj3.name = 'Rohit';
+        console.log(obj3,obj4,obj3===obj4);
+
+        // Shallow copying / cloning
+        let obj6 = {name:'Aleena', age:20, social:{
+            twitter: 'tweet@aleena',
+            fb: 'fb@aleena'
+        }};
+        let obj5 = Object.assign({}, obj6);
+        console.log(obj6,obj5,obj6===obj5);
+        obj5.name = 'Rohit';
+        console.log(obj6,obj5,obj6===obj5);
+
+        console.log(obj6.social.twitter,obj5.social.twitter);
+        obj5.social.twitter = '@aleena';
+        console.log(obj6.social.twitter,obj5.social.twitter);
+        // it happens as shallow copying copies only the first level, balance reference copied
+
+
+        // .........Deep Copying........ 
+        // -- using JSON methods
+        const obj7 = {name:'Aleena', age:20, social:{
+            twitter: 'tweet@aleena',
+            fb: 'fb@aleena'
+        }};
+        const obj8 = JSON.parse(JSON.stringify(obj7));
+        console.log(obj7.social,obj8.social);
+        obj7.social.twitter = 'aleena@tweet';
+        console.log(obj7.social,obj8.social);
+ 
+
+    </script>
+</body> 
+</html>
