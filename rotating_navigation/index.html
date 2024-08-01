@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rotating Navigation</title>
+
+    <style>
+        body{
+            background-color: black;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container{
+            background-color: white;
+            width: 100vw;
+            height: 140vh;            
+            transform-origin: top left;
+            transition: transform 0.5s linear;
+        }
+        .container > .circle {
+            position: fixed;
+            top: -125px;
+            left: -125px;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-color: rgb(248, 76, 76);
+            display: grid;
+            place-items: center;
+            transition: transform 0.5s linear;
+        }
+        .btn{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 70%;
+            left: 65%;
+        }
+        #close{
+            display: none;
+            transform: rotate(5deg);
+        }
+        ul{
+            position: absolute;
+            bottom: 10%;
+            list-style-type: none;
+            transform: translateX(-150px);
+            transition: transform 0.5s linear;
+        }
+        ul li{
+            color: black;
+            background-color: white;     
+            margin: 20px 0;
+            padding: 8px;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            width: 80px;
+        }
+        ul li+li{
+            margin-left: 20px;
+        }
+        ul li+li+li{
+            margin-left: 40px;
+        }
+        h1{
+            position: absolute;
+            top: 400px;
+            width: 100%;
+            text-align: center;   
+            z-index: 10;
+        }
+
+    </style>
+  </head>
+  <body>
+
+
+    <div class="container">
+        <div class="circle">
+            <div id="close" class="btn">
+                <img src="img/close.png" alt="">
+            </div>
+            <div id="open" class="btn">
+                <img src="img/menu.png" alt="">
+            </div>
+        </div>
+        <h1>Click the menu icon</h1>
+    </div>
+
+    <ul>
+        <li>Home</li>
+        <li>Contact</li>
+        <li>Help</li>
+    </ul>
+
+    <script>
+
+       const openBtn = document.getElementById('open');
+       const closeBtn = document.getElementById('close');
+       const container = document.querySelector('.container');
+       const circle = document.querySelector('.circle');
+       const menu = document.querySelector('ul');
+
+       openBtn.addEventListener('click', function() {
+            openBtn.style.display = 'none';
+            closeBtn.style.display = 'block';
+            container.style.transform ='rotate(-20deg)';
+            circle.style.transform = 'rotate(-345deg)';
+            menu.style.transform = 'translateX(0px)';
+
+       });
+
+       closeBtn.addEventListener('click', function() {
+        closeBtn.style.display = 'none';
+        openBtn.style.display = 'block';
+            container.style.transform ='rotate(0deg)';
+            circle.style.transform = 'rotate(0deg)';
+            menu.style.transform = 'translateX(-150px)';
+       });
+    </script>
+
+  </body>
+</html>                                                    

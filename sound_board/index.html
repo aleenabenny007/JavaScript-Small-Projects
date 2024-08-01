@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Board</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body{
+            display:grid;
+            place-items: center;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(161, 100, 223);
+            text-align: center;
+        }
+
+        .btn{
+            background-color: rebeccapurple;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 1rem;
+            padding: 1.5rem 3rem; 
+            /* border: 0; */
+        }
+    </style>
+</head>
+<body>
+    <audio id="applause" src="sounds/applause.mp3"></audio>
+    <audio id="boo" src="sounds/boo.mp3"></audio>
+    <audio id="gasp" src="sounds/gasp.mp3"></audio>
+    <audio id="tada" src="sounds/tada.mp3"></audio>
+    <audio id="victory" src="sounds/victory.mp3"></audio>
+    <audio id="wrong" src="sounds/wrong.mp3" ></audio>
+      
+    <div id="buttons"></div>
+
+    <script>
+        const sounds = ['applause', 'boo', 'gasp', 'tada', 'victory', 'wrong'];
+
+        function stopMusic(){
+            document.querySelectorAll('audio').forEach(music => {
+                music.pause();
+                music.currentTime = 0;
+            });
+        }
+
+        sounds.forEach(sound => {
+            const btn = document.createElement('button');
+            btn.classList.add('btn');
+
+            btn.innerText = sound;   
+
+            btn.addEventListener('click', function(){
+                stopMusic();
+                document.getElementById(sound).play();
+            });
+
+            document.getElementById('buttons').appendChild(btn);
+        });
+    </script>
+</body>
+</html>

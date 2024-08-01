@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Steps</title>
+
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f6f7fb;
+      }
+
+      *{
+        box-sizing: border-box;
+      }
+
+      .container{
+        width: fit-content;
+        height: max-content;
+        text-align: center;
+      }
+
+      .progress-container{
+        display: flex;
+        justify-content: space-between;
+        position: relative; 
+        margin-bottom: 30px;
+        width: 350px;
+      }
+
+      .progress-container::before {
+        content: '';
+        background-color: #e0e0e0;
+        position: absolute;
+        top: 50%;
+        height: 4px;
+        width: 100%;
+        z-index: -1;
+      }
+
+      .progress {
+        background-color: rgb(85, 85, 248);
+        position: absolute;
+        top: 50%;
+        height: 4px;
+        width: 0%;
+        z-index: -1;
+        transition: 0.4s ease;
+      }
+
+      .circle{
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background-color: #f6f7fb;
+        border: 2px solid rgb(208, 206, 206);
+      }
+
+      .circle.active{
+        border-color: rgb(85, 85, 248);
+      }
+
+      button{
+        padding: 8px 15px;
+        margin-right: 20px;
+        border-radius: 20px;
+      }
+
+      button:disabled{
+        background-color: rgba(222, 217, 217, 0.458);
+      }
+
+      button:enabled{
+        background-color: green;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="progress-container">
+        <div class="progress" id="progress"></div>
+        <div class="circle active">1</div>
+        <div class="circle">2</div>
+        <div class="circle">3</div>
+        <div class="circle">4</div>
+      </div>
+      <button id="prev" class="btn" disabled>< Previous</button>
+      <button id="next" class="btn">Next ></button>
+    </div>
+
+    <script>
+
+        const prevBtn = document.getElementById('prev');
+        const nextBtn = document.getElementById('next');
+        const progressLine = document.getElementById('progress');
+        const circles = document.querySelectorAll('.circle');
+
+        let currentActive = 1;
+
+        function updateView() {
+            if(currentActive === 1){
+                prevBtn.disabled = true
+            } else if(currentActive === circles.length) {
+                nextBtn.disabled = true
+            } else {
+                nextBtn.disabled = false;
+                prevBtn.disabled = false;
+            }
+
+            circles.forEach((circle, index) =>{
+                if(index < currentActive)
+                  circle.classList.add('active');
+                else circle.classList.remove('active');
+                    
+            });
+
+            const actives = document.querySelectorAll('.active');
+
+            progressLine.style.width = ((actives.length - 1) / (circles.length - 1) * 100 ) + '%';
+        }
+
+        prevBtn.addEventListener('click', function(){        
+            currentActive--;
+            updateView();
+        });
+
+        nextBtn.addEventListener('click', function(){        
+            currentActive++;
+            updateView();
+        });
+
+    </script>
+
+  </body>
+</html>

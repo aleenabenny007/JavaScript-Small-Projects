@@ -1,0 +1,27 @@
+
+* {
+  box-sizing: border-box;
+} 
+
+body {
+  background-color: #fafafa; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+} 
+
+.background {
+  background-image: url('https://img.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37328.jpg?t=st=1721706820~exp=1721710420~hmac=0d1a1c5982328c182c66da9a460bffce374ca62d7bd9fd8325c1c7ee85a3f0f5&w=826');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  filter: blur(20px);
+}
